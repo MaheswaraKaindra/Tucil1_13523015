@@ -42,7 +42,7 @@ Selamat datang di Tugas Kecil 1 Algoritma Pemrograman oleh Kaindra. Proyek ini b
    java Main
    ```
 
-   ***Cara 2 : menekan file .bat untuk langsung menjalankannya di Windows.***
+   ***Cara 2 : menekan file run.bat untuk langsung menjalankannya di Windows.***
 
    ***Cara 3 : menggunakan jar dengan command berikut (direktori harus bin).***
    
