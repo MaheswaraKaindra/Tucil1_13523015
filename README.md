@@ -34,9 +34,9 @@ Selamat datang di Tugas Kecil 1 Algoritma Pemrograman oleh Kaindra. Proyek ini b
    ```bash
    cd bin
    ```
-3. **Jalankan Program**:
+3. **Jalankan Program (DIREKTORI HARUS bin)**:
 
-   ***Cara 1 : langsung melakukan running di terminal (direktori harus bin).***
+   ***Cara 1 : langsung melakukan running di terminal.***
 
    ```bash
    java Main
@@ -44,7 +44,7 @@ Selamat datang di Tugas Kecil 1 Algoritma Pemrograman oleh Kaindra. Proyek ini b
 
    ***Cara 2 : menekan file run.bat untuk langsung menjalankannya di Windows.***
 
-   ***Cara 3 : menggunakan jar dengan command berikut (direktori harus bin).***
+   ***Cara 3 : menggunakan jar dengan command berikut.***
    
    ```bash
    java -jar Tucil1.jar
