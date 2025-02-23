@@ -30,22 +30,29 @@ Selamat datang di Tugas Kecil 1 Algoritma Pemrograman oleh Kaindra. Proyek ini b
    ```bash
    cd Tucil1_13523015
    ```
-2. **Pindah Direktori ke bin/**
+2. **Pindah Direktori ke bin**
    ```bash
    cd bin
    ```
 3. **Jalankan Program**:
+   Cara 1 : langsung melakukan running di terminal (direktori harus bin).
    ```bash
    java Main
    ```
-   Atau Anda dapat menekan file .bat untuk langsung menjalankannya di Windows.
+   Cara 2 : menekan file .bat untuk langsung menjalankannya di Windows.
+   Cara 3 : menggunakan jar dengan command berikut (direktori harus bin).
+   ```bash
+   java -jar Tucil1.jar
+
+   ```
 
 ---
 
 ## Kontributor
 
-- **Maheswara Bayu Kaindra**  
+- **Maheswara Bayu Kaindra (13523015)**  
   - [LinkedIn](https://www.linkedin.com/in/maheswarakaindra/)  
   - [Email](mailto:2kaindramaheswara11@gmail.com)
+  - [Email](mailto:213523015@std.stei.itb.ac.id)
 
 ---
