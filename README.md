@@ -35,12 +35,17 @@ Selamat datang di Tugas Kecil 1 Algoritma Pemrograman oleh Kaindra. Proyek ini b
    cd bin
    ```
 3. **Jalankan Program**:
+
    ***Cara 1 : langsung melakukan running di terminal (direktori harus bin).***
+
    ```bash
    java Main
    ```
+
    ***Cara 2 : menekan file .bat untuk langsung menjalankannya di Windows.***
+
    ***Cara 3 : menggunakan jar dengan command berikut (direktori harus bin).***
+   
    ```bash
    java -jar Tucil1.jar
 
