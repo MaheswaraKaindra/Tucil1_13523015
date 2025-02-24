@@ -137,49 +137,72 @@ public class Solver {
     }
 
     public static void readInput(String filename) throws IOException {
-        BufferedReader br = new BufferedReader(new java.io.FileReader(filename));
-
-        String[] boardSpesification = br.readLine().split(" ");
-        N = Integer.parseInt(boardSpesification[0]);
-        M = Integer.parseInt(boardSpesification[1]);
-        P = Integer.parseInt(boardSpesification[2]);
-
-        boardType = br.readLine();
-
-        char[][] customBoard = new char[N][M];
-        if (boardType.equals("CUSTOM")){
-            for (int i = 0; i < N; ++i){
-                String line = br.readLine().trim();
-                for (int j = 0; j < M; ++j){
-                    customBoard[i][j] = line.charAt(j);
+        BufferedReader br = new BufferedReader(new FileReader(filename));
+    
+        try {
+            // Membaca baris pertama (N, M, P)
+            String[] boardSpecification = br.readLine().trim().split(" ");
+            if (boardSpecification.length != 3) {
+                throw new IllegalArgumentException("Format salah King: Baris pertama harus berisi tiga angka (N M P).");
+            }
+    
+            try {
+                N = Integer.parseInt(boardSpecification[0]);
+                M = Integer.parseInt(boardSpecification[1]);
+                P = Integer.parseInt(boardSpecification[2]);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Format salah King: N, M, dan P harus angka.");
+            }
+    
+            boardType = br.readLine().trim();
+            if (!boardType.equals("DEFAULT") && !boardType.equals("CUSTOM")) {
+                throw new IllegalArgumentException("Format salah King: Tipe papan harus DEFAULT atau CUSTOM, jangan freestyle.");
+            }
+    
+            char[][] customBoard = new char[N][M];
+            if (boardType.equals("CUSTOM")) {
+                for (int i = 0; i < N; i++) {
+                    String line = br.readLine();
+                    if (line == null || line.length() != M) {
+                        throw new IllegalArgumentException("Format salah King: Setiap baris dalam papan CUSTOM harus berisi " + M + " karakter.");
+                    }
+                    customBoard[i] = line.toCharArray();
                 }
             }
-        }
-
-        List<String> lines = new ArrayList<>();
-        String line;
-        char tempBlock = '\0';
-        while ((line = br.readLine()) != null){
-            if (!line.isEmpty()){
-                char currentBlock = getCurrentBlock(line);
-                if (tempBlock != '\0' && currentBlock != tempBlock){
-                    boardBlocks.add(convertToBlock(lines));
-                    lines.clear();
+    
+            List<String> lines = new ArrayList<>();
+            String line;
+            char tempBlock = '\0';
+            while ((line = br.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    char currentBlock = getCurrentBlock(line);
+                    if (tempBlock != '\0' && currentBlock != tempBlock) {
+                        boardBlocks.add(convertToBlock(lines));
+                        lines.clear();
+                    }
+                    lines.add(line);
+                    tempBlock = currentBlock;
                 }
-                lines.add(line);
-                tempBlock = currentBlock;
             }
+            boardBlocks.add(convertToBlock(lines));
+    
+            br.close();
+    
+            if (boardType.equals("CUSTOM")) {
+                board = new Board(N, M, customBoard);
+            } else {
+                board = new Board(N, M);
+            }
+            
+        } catch (IOException e) {
+            throw new IOException("Terjadi kesalahan saat membaca file: " + filename);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Yang bener King, "+ e.getMessage());
+            System.out.println("Silakan cek format file dan coba lagi King.");
+        }  finally {
+            br.close();
         }
-        boardBlocks.add(convertToBlock(lines));
-
-        if(boardType.equals("DEFAULT")){
-            board = new Board(N, M);
-        } else {
-            board = new Board(N, M, customBoard);
-        }
-
-        br.close();
-    }
+    }    
 
     private static char getCurrentBlock(String line){
         char currentBlock = ' ';
