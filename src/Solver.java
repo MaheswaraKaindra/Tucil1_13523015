@@ -140,7 +140,6 @@ public class Solver {
         BufferedReader br = new BufferedReader(new FileReader(filename));
     
         try {
-            // Membaca baris pertama (N, M, P)
             String[] boardSpecification = br.readLine().trim().split(" ");
             if (boardSpecification.length != 3) {
                 throw new IllegalArgumentException("Format salah King: Baris pertama harus berisi tiga angka (N M P).");
